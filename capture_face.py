@@ -1,6 +1,7 @@
 import cv2
 import os
 
+
 dataset_path = './dataset'
 person_names_file = './dataset/person_names.txt'
 
