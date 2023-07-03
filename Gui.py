@@ -1,26 +1,41 @@
 import tkinter as tk
 from tkinter import ttk
+import os
 
 
 window = tk.Tk()
 window.geometry("500x500")
 window.resizable(False, False)
-input_frame = ttk.Frame(window)
+big_frame = ttk.Frame(window)
+big_frame.pack(padx=20, pady=20, fill='x',expand=True)
 
-input_frame.pack(padx=20, pady=20, fill='x', expand=True)
+window.tk.call("source", "azure.tcl")
+window.tk.call("set_theme", "light")
+
 def click():
-    import capture_face.py
+    os.system ("python capture_face.py")
 def click1():
-    import training.py
+    os.system ("python training.py")
 def click2():
-    import face_recognition.py
-tombol = ttk.Button( input_frame, text="Capture", command= click)
-tombol.pack(fill='y', expand=True, padx=10, pady=10)
-tombol1 = ttk.Button( input_frame, text="Training", command= click1)
-tombol1.pack(fill='y', expand=True, padx=10, pady=10)
-tombol2 = ttk.Button( input_frame, text="Scan Your Face", command= click1)
-tombol2.pack(fill='y', expand=True, padx=10, pady=10)
+    os.system ("python face_recognition.py")
 
+def change_theme():
 
-window.title("ANJAY")
+    if window.tk.call("ttk::style", "theme", "use") == "azure-dark":
+
+        window.tk.call("set_theme", "light")
+    else:
+  
+        window.tk.call("set_theme", "dark")
+
+tombol = ttk.Button(big_frame,text="Capture",style='Accent.TButton', command= click)
+tombol.pack(padx=10, pady=30,anchor='center')
+tombol1 = ttk.Button(big_frame, text="Training",style='Accent.TButton', command= click1)
+tombol1.pack(padx=10, pady=30,anchor='center')
+tombol2 = ttk.Button(big_frame,text="Scan Your Face",style='Accent.TButton', command= click2)
+tombol2.pack(padx=10, pady=30,anchor='center')
+tombol3 = ttk.Button(big_frame, text="Change theme!",style='Accent.TButton', command=change_theme)
+tombol3.pack(padx=10, pady=30,anchor='center')
+
+window.title("Face Recognition System")
 window.mainloop()
