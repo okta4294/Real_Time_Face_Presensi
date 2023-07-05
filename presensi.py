@@ -6,7 +6,7 @@ window = tk.Tk()
 window.geometry("500x500")
 window.resizable(False, False)
 
-
+#load data excel
 def load_data():
     path = 'data_pengenalan_wajah.xlsx'
     wb = openpyxl.load_workbook(path)
@@ -23,15 +23,15 @@ def load_data():
 
 frame = ttk.Frame(window)
 frame.pack()
-
+#tampilan tabel
 treeframe = ttk.Frame(frame)
 treeframe.grid(row=0, column=0, padx=10, pady=10)
 treescroll = ttk.Scrollbar(treeframe)
 treescroll.pack(side='right', fill='y')
-
+#inisialisasi kolom tabel, sesuaikan dengan kolom yang ada di excel
 cols = ('No', 'Nama', 'Waktu')
 treeview = ttk.Treeview(treeframe, columns=cols, show='headings',yscrollcommand=treescroll.set, height=31)
-treeview.column("No", width=50)
+treeview.column("No", width=50) #lebar kolom
 treeview.column("Nama", width=200)
 treeview.column("Waktu", width=200)
 treeview.pack()

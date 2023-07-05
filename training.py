@@ -6,7 +6,7 @@ import pickle
 dataset_path = './dataset'
 recognizer_path = './recognizer'
 encodings_file = os.path.join(recognizer_path, 'encodings.pickle')
-
+#buat folder recognizer
 if not os.path.exists(recognizer_path):
     os.makedirs(recognizer_path)
 
@@ -17,7 +17,7 @@ face_encodings = []
 labels = []
 
 person_names = []
-
+#looping buat load dataset
 for person_dir in os.listdir(dataset_path):
     person_name = person_dir
     person_names.append(person_name)
@@ -38,6 +38,6 @@ for person_dir in os.listdir(dataset_path):
             labels.append(person_names.index(person_name) + 1)
 
 recognizer.train(face_encodings, np.array(labels))
-
+#simpan file recognizer
 with open(encodings_file, 'wb') as f:
     pickle.dump({'encodings': face_encodings, 'labels': labels, 'person_names': person_names}, f)

@@ -1,19 +1,20 @@
-import cv2
+import cv2 
 import pickle
 import os
 import numpy as np
 import pandas as pd
 from datetime import datetime
-
+#path untuk file recognizer
 recognizer_path = './recognizer'
 encodings_file = os.path.join(recognizer_path, 'encodings.pickle')
 
+#load file recognizer
 with open(encodings_file, 'rb') as f:
     data = pickle.load(f)
     face_encodings = data['encodings']
     labels = data['labels']
     person_names = data['person_names']
-
+#load cascade classifier buat deteksi wajah
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.train(face_encodings, np.array(labels))
