@@ -6,6 +6,7 @@ window = tk.Tk()
 window.geometry("500x500")
 window.resizable(False, False)
 
+
 def load_data():
     path = 'data_pengenalan_wajah.xlsx'
     wb = openpyxl.load_workbook(path)
