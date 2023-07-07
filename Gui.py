@@ -4,7 +4,7 @@ import os
 
 #code untuk tampilan GUI
 window = tk.Tk()
-window.geometry("500x500") #ukuran window
+window.geometry("300x450") #ukuran window
 window.resizable(False, False) #window tidak bisa diresize
 big_frame = ttk.Frame(window) #frame untuk tombol
 big_frame.pack(padx=20, pady=20, fill='x',expand=True) #padding frame

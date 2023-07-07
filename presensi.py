@@ -3,8 +3,11 @@ from tkinter import ttk
 import openpyxl
 
 window = tk.Tk()
-window.geometry("500x500")
+window.geometry("550x500")
 window.resizable(False, False)
+
+window.tk.call("source", "azure.tcl")
+window.tk.call("set_theme", "dark")
 
 #load data excel
 def load_data():
@@ -30,7 +33,7 @@ treescroll = ttk.Scrollbar(treeframe)
 treescroll.pack(side='right', fill='y')
 #inisialisasi kolom tabel, sesuaikan dengan kolom yang ada di excel
 cols = ('No', 'Nama', 'Waktu')
-treeview = ttk.Treeview(treeframe, columns=cols, show='headings',yscrollcommand=treescroll.set, height=31)
+treeview = ttk.Treeview(treeframe, columns=cols, show='headings',yscrollcommand=treescroll.set, height=20)
 treeview.column("No", width=50) #lebar kolom
 treeview.column("Nama", width=200)
 treeview.column("Waktu", width=200)
